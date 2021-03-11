@@ -6,6 +6,7 @@ class WhatsAppController {
 
         this.elementsPrototype();
         this.loadElements();
+        this.initEvents();
 
     }
 
@@ -34,7 +35,7 @@ class WhatsAppController {
             return this;
         }
 
-        Element.prototype.on = function(events, fn) {
+        Element.prototype.on = function (events, fn) {
             events.split(' ').forEach(event => {
                 this.addEventListener(event, fn);
             });
@@ -58,14 +59,51 @@ class WhatsAppController {
             return this;
         }
 
-        Element.prototype.addClass = function(name) {
+        Element.prototype.toggleClass = function(name) {
             this.classList.toggle(name);
             return this;
         }
 
-        Element.prototype.addClass = function(name) {
+        Element.prototype.hasClass = function(name) {
             return this.classList.contains(name);
         }
     }
-    
+
+    initEvents() {
+
+        this.el.myPhoto.on('click', e => {
+
+            this.closeAllLeftPanel();
+            this.el.panelEditProfile.show();
+            setTimeout(() => {
+                this.el.panelEditProfile.addClass('open');
+            }, 300);
+
+        });
+        
+        this.el.btnNewContact.on('click', e => {
+
+            this.closeAllLeftPanel();
+            this.el.panelAddContact.show();
+            setTimeout(() => {
+                this.el.panelAddContact.addClass('open');
+            }, 300);
+
+        });
+
+        this.el.btnClosePanelEditProfile.on('click', e => {    
+            this.el.panelEditProfile.removeClass('open');
+        });
+        this.el.btnClosePanelAddContact.on('click', e => {
+            this.el.panelAddContact.removeClass('open');
+        });
+
+    }
+
+    closeAllLeftPanel() {
+
+        this.el.panelAddContact.hide();
+        this.el.panelEditProfile.hide();
+
+    }
 }
