@@ -9,7 +9,7 @@ export class CameraController {
         }).then(stream => {
 
             this._stream = stream;
-            this._videoEl.src = URL.createObjectURL(stream);
+            this._videoEl.srcObject = stream;
             this._videoEl.play();
 
         }).catch(err => {
@@ -33,7 +33,7 @@ export class CameraController {
 
         let context = canvas.getContext('2d');
 
-        context.drawImage(this.videoEl, 0, 0, canvas.width, canvas.height);
+        context.drawImage(this._videoEl, 0, 0, canvas.width, canvas.height);
 
         return canvas.toDataURL(mimeType);
     }

@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/BruunoL/whatsapp-clone#readme",
   "dependencies": {
+    "pdfjs-dist": "^2.6.347",
     "webpack": "^3.1.0"
   },
   "devDependencies": {
