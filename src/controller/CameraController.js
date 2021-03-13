@@ -4,7 +4,7 @@ class CameraController {
 
         this._videoEl = videoEl;
 
-        navigator.mediaDevices.getUserMedia( {
+        navigator.mediaDevices.getUserMedia({
             video: true
         }).then(stream => {
 
